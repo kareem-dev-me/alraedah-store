@@ -1,0 +1,60 @@
+<template>
+  <v-container>
+    <p id="products-list" class="text-center text-h4 my-5">Products List</p>
+
+    <v-row>
+      <v-col v-for="product in products" :key="product.id" cols="12" md="4">
+        <base-card
+          :id="product.id"
+          :title="product.title"
+          :image="product.image"
+        ></base-card>
+      </v-col>
+    </v-row>
+
+    <br />
+
+    <v-pagination
+      v-model="page"
+      :length="totalProducts > 100 ? Math.floor(totalProducts / 100) : 1"
+      circle
+      @input="getNewProducts"
+    ></v-pagination>
+  </v-container>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import BaseCard from '~/components/UI/BaseCard.vue'
+export default {
+  components: {
+    BaseCard,
+  },
+  props: {
+    products: Array,
+    totalProducts: Number,
+  },
+  data() {
+    return {
+      page: 1,
+    }
+  },
+  computed: {
+    ...mapGetters('products', ['searchTerm']),
+  },
+  methods: {
+    ...mapActions('products', ['getProducts']),
+
+    async getNewProducts(page) {
+      await this.getProducts({
+        searchTerm: this.searchTerm,
+        skip: page * 100,
+      })
+
+      this.$vuetify.goTo('#products-list', { offset: 100 })
+    },
+  },
+}
+</script>
+
+<style></style>
