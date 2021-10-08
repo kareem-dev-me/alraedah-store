@@ -1,5 +1,12 @@
 # alraedah-store
 
+## Description of the task
+You are to build an online grocery store. User will be able to search for products and add them to cart. On check out
+screen, you will display recommended recipes for the user based on items in cart.
+
+## The result
+https://alraedah-store.herokuapp.com/
+
 ## Build Setup
 
 ```bash
