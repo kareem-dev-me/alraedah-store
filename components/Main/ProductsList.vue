@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <p id="products-list" class="text-center text-h4" :class="className">
-      Products List
+    <p class="text-center text-h4" :class="className">
+      {{ $t('products-list') }}
     </p>
 
     <v-row>

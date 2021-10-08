@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 import env from './env'
+import en from './locales/en.json'
+import ar from './locales/ar.json'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -15,14 +17,25 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/logo.png' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/index.js', '~/plugins/theme.js', '~/plugins/http.js'],
+  plugins: [
+    '~/plugins/index.js',
+    '~/plugins/theme.js',
+    '~/plugins/locale.js',
+    '~/plugins/http.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -39,7 +52,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/i18n',
   ],
+  i18n: {
+    locales: ['en', 'ar'],
+    defaultLocale: 'en',
+    vueI18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      messages: {
+        en,
+        ar,
+      },
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <p id="products-list" class="text-center text-h4">Checkoout</p>
+    <p id="products-list" class="text-center text-h4">{{ $t('checkout') }}</p>
 
     <v-card class="card mx-auto rounded-lg" max-width="400">
       <v-card-text>
@@ -17,7 +17,7 @@
           color="primary"
           :disabled="!method"
           @click="openCheckoutDone"
-          >Checkout</v-btn
+          >{{ $t('checkout') }}</v-btn
         >
       </v-card-text>
       <checkout-done></checkout-done>
@@ -35,7 +35,12 @@ export default {
   data() {
     return {
       method: null,
-      methods: ['Cash', 'Visa', 'MasterCard', 'Paypal'],
+      methods: [
+        this.$t('cash'),
+        this.$t('visa'),
+        this.$t('mastercard'),
+        this.$t('paypal'),
+      ],
     }
   },
   methods: {

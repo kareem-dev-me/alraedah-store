@@ -5,15 +5,19 @@
         <v-icon color="primary" size="50" class="ma-5"
           >mdi-checkbox-marked-circle-outline</v-icon
         >
-        <p class="text-overline mb-0">Your order is set successfully,</p>
-        <p class="text-overline">Thank you</p>
+        <p class="text-overline mb-0">
+          {{ $t('your-order-is-set-successfully') }}
+        </p>
+        <p class="text-overline">{{ $t('thank-you') }}</p>
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="clearData"> Close </v-btn>
+        <v-btn color="primary" text @click="clearData">
+          {{ $t('close') }}
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -43,7 +47,7 @@ export default {
       this.$Cookies.remove('cartCount')
       this.setCartCount(0)
 
-      this.$router.push('/')
+      this.$router.push(this.localeLocation('/'))
     },
   },
 }

@@ -1,12 +1,18 @@
 <template>
   <div class="fetures-row white--text py-5">
     <v-container>
-      <p class="text-center text-h4">Features</p>
+      <p
+        v-animate-onscroll="'animate__animated animate__fadeInUp'"
+        class="text-center text-h4"
+      >
+        {{ $t('features') }}
+      </p>
 
       <v-row>
         <v-col
           v-for="(item, index) in featuresList"
           :key="index"
+          v-animate-onscroll="'animate__animated animate__fadeInUp'"
           cols="12"
           md="3"
         >
@@ -26,10 +32,10 @@ export default {
   data() {
     return {
       featuresList: [
-        { icon: 'mdi-magnify', title: 'Search what you want' },
-        { icon: 'mdi-clock-fast', title: 'Very fast API' },
-        { icon: 'mdi-cart-check', title: 'Easy to shop' },
-        { icon: 'mdi-desktop-mac-dashboard', title: 'Easy to use' },
+        { icon: 'mdi-magnify', title: this.$t('search-what-you-want') },
+        { icon: 'mdi-clock-fast', title: this.$t('very-fast-api') },
+        { icon: 'mdi-cart-check', title: this.$t('easy-to-shop') },
+        { icon: 'mdi-desktop-mac-dashboard', title: this.$t('easy-to-use') },
       ],
     }
   },

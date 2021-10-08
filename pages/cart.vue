@@ -7,16 +7,28 @@
         contain
         eager
       ></v-img>
-      <h1>No items yet</h1>
-      <v-btn to="/" color="primary">Shop now</v-btn>
+      <h1>{{ $t('no-items-yet') }}</h1>
+      <v-btn :to="localePath('/')" color="primary">{{ $t('shop-now') }}</v-btn>
     </div>
 
     <v-row v-else>
-      <v-col cols="12" md="8" order-md="1" order="2">
+      <v-col
+        cols="12"
+        md="8"
+        order-md="1"
+        order="2"
+        class="animate__fadeInLeft animate__animated"
+      >
         <products-list :products="products" is-cart-product></products-list>
       </v-col>
 
-      <v-col cols="12" md="4" order-md="2" order="1">
+      <v-col
+        cols="12"
+        md="4"
+        order-md="2"
+        order="1"
+        class="animate__fadeInRight animate__animated animate__delay-1s"
+      >
         <checkout-card></checkout-card>
         <recipes-card :recipes="recipes ? recipes : []"></recipes-card>
       </v-col>
@@ -40,6 +52,11 @@ export default {
     return {
       products: [],
       recipes: [],
+    }
+  },
+  head() {
+    return {
+      title: this.$t('cart'),
     }
   },
 

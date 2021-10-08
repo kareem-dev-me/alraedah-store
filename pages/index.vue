@@ -4,8 +4,20 @@
 
     <features></features>
 
+    <div v-if="products && products.length === 0" class="text-center">
+      <v-img
+        :src="require('~/assets/undraw_warning_cyit.svg')"
+        max-height="200"
+        contain
+        eager
+      ></v-img>
+      <h1>{{ $t('no-items-found') }}</h1>
+    </div>
+
+    <span id="products-list" style="height: 0; width: 0"></span>
+
     <products-list
-      v-if="products.length > 0"
+      v-if="products && products.length > 0"
       :products="products"
       :total-products="+totalProducts"
       class-name="my-5"
@@ -23,6 +35,11 @@ export default {
     ProductsList,
     Hero,
     Features,
+  },
+  head() {
+    return {
+      title: this.$t('home'),
+    }
   },
   computed: {
     ...mapGetters('products', ['products', 'totalProducts']),

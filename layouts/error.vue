@@ -17,7 +17,7 @@
         <h1 v-else>
           {{ otherError }}
         </h1>
-        <v-btn to="/" color="primary">Go to home</v-btn>
+        <v-btn :to="localePath('/')" color="primary">Go to home</v-btn>
       </div>
     </div>
   </v-app>

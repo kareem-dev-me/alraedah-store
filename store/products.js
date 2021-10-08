@@ -2,7 +2,7 @@ import { http } from '../plugins/http'
 
 export const state = () => ({
   searchTerm: '',
-  products: [],
+  products: null,
   totalProducts: 1,
 })
 
@@ -27,6 +27,7 @@ export const actions = {
       commit('setProducts', response.products)
       commit('setTotalProducts', response.totalProducts)
       commit('setSearchTerm', payload.searchTerm)
+      payload.$vuetify.goTo('#products-list', { offset: 100 })
     }
 
     const props = {

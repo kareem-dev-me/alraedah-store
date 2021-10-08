@@ -8,7 +8,7 @@
 
     <v-footer absolute app class="d-block">
       <p class="text-center mb-0 text-subtitle-2">
-        All rights reserved &copy; {{ new Date().getFullYear() }}
+        {{ $t('all-rights-reserved') }} &copy; {{ new Date().getFullYear() }}
       </p>
     </v-footer>
 
@@ -29,7 +29,7 @@
           v-bind="attrs"
           @click="snackbarShow = false"
         >
-          Close
+          {{ $t('close') }}
         </v-btn>
       </template>
     </v-snackbar>
@@ -63,6 +63,13 @@ export default {
     snackbarMessage() {
       return this.$store.getters.snackbar.message
     },
+  },
+  mounted() {
+    const currentLocale = this.$i18n.locale
+
+    if (currentLocale === 'ar') {
+      this.$vuetify.rtl = true
+    }
   },
 }
 </script>

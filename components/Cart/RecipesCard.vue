@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <p id="products-list" class="text-center text-h4">Recipes for you</p>
+    <p id="products-list" class="text-center text-h4">
+      {{ $t('recipes-for-you') }}
+    </p>
 
     <v-card
       v-for="recipe in recipes"
@@ -9,12 +11,12 @@
       max-width="400"
     >
       <v-img :src="recipe.image" class="align-end">
-        <div class="text white--text rounded">
+        <div class="text white--text">
           <v-card-title class="title">
             {{ recipe.title }}
           </v-card-title>
           <v-card-subtitle class="pb-2 sub-title">
-            Missed ingredients: {{ recipe.missedIngredientCount }}
+            {{ $t('missed-ingredients') }} {{ recipe.missedIngredientCount }}
           </v-card-subtitle>
         </div>
       </v-img>

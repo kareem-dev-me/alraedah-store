@@ -29,7 +29,7 @@
             {{ qty }}
           </v-btn>
         </template>
-        <span>Quantity</span>
+        <span>{{ $t('quantity') }}</span>
       </v-tooltip>
     </v-img>
     <v-card-title>{{ title }}</v-card-title>
@@ -96,7 +96,10 @@ export default {
 
     showMessage() {
       this.$store.commit('snackbarShow', true)
-      this.$store.commit('snackbarMessage', 'Added to cart successfully')
+      this.$store.commit(
+        'snackbarMessage',
+        this.$t('added-to-cart-successfully')
+      )
     },
   },
 }

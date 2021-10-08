@@ -4,19 +4,26 @@
       <v-row align="center">
         <v-col cols="12" md="6">
           <h1
-            class="text-capitalize font-weight-medium my-10 black--text"
-            :class="
+            class="
+              text-capitalize
+              font-weight-medium
+              my-10
+              black--text
+              animate__fadeInLeft animate__animated
+            "
+            :class="[
               $vuetify.breakpoint.mdAndUp
                 ? 'display-4'
-                : 'display-2 text-center'
-            "
+                : 'display-2 text-center',
+            ]"
           >
-            The best grocery shop
+            {{ $t('the-best-grocery-shop') }}
           </h1>
 
           <v-text-field
             v-model="searchTerm"
-            label="What you want?"
+            class="animate__fadeInLeft animate__animated animate__delay-1s"
+            :label="$t('search-what-you-want')"
             hide-details
             filled
             background-color="#000000ac"
@@ -25,9 +32,9 @@
             @keydown.enter="search"
           >
             <template #append>
-              <v-btn small color="primary" @click.prevent="search"
-                >Search</v-btn
-              >
+              <v-btn small color="primary" @click.prevent="search">{{
+                $t('search')
+              }}</v-btn>
             </template>
           </v-text-field>
         </v-col>
@@ -35,7 +42,10 @@
         <v-col cols="12" md="6">
           <v-img
             :src="require('~/assets/Group.png')"
-            class="mx-auto"
+            class="
+              mx-auto
+              animate__fadeInRight animate__animated animate__delay-2s
+            "
             height="600"
             width="550"
             contain
@@ -63,9 +73,8 @@ export default {
       if (this.searchTerm) {
         await this.getProducts({
           searchTerm: this.searchTerm,
+          $vuetify: this.$vuetify,
         })
-
-        this.$vuetify.goTo('#products-list', { offset: 100 })
       }
     },
   },
