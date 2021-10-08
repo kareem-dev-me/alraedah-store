@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <p id="products-list" class="text-center text-h4 my-5">Products List</p>
+    <p id="products-list" class="text-center text-h4" :class="className">
+      Products List
+    </p>
 
     <v-row>
       <v-col v-for="product in products" :key="product.id" cols="12" md="4">
@@ -8,6 +10,8 @@
           :id="product.id"
           :title="product.title"
           :image="product.image"
+          :is-cart-product="isCartProduct"
+          :qty="+product.qty"
         ></base-card>
       </v-col>
     </v-row>
@@ -15,6 +19,7 @@
     <br />
 
     <v-pagination
+      v-if="!isCartProduct"
       v-model="page"
       :length="totalProducts > 100 ? Math.floor(totalProducts / 100) : 1"
       circle
@@ -33,6 +38,8 @@ export default {
   props: {
     products: Array,
     totalProducts: Number,
+    isCartProduct: Boolean,
+    className: String,
   },
   data() {
     return {

@@ -1,5 +1,3 @@
-// import { http } from '../plugins/http'
-
 export const state = () => ({
   isLoading: false,
   snackbar: { show: false, message: '' },

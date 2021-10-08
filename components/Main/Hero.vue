@@ -4,7 +4,7 @@
       <v-row align="center">
         <v-col cols="12" md="6">
           <h1
-            class="text-capitalize font-weight-medium my-10"
+            class="text-capitalize font-weight-medium my-10 black--text"
             :class="
               $vuetify.breakpoint.mdAndUp
                 ? 'display-4'
@@ -22,6 +22,7 @@
             background-color="#000000ac"
             color="white"
             dark
+            @keydown.enter="search"
           >
             <template #append>
               <v-btn small color="primary" @click.prevent="search"
